@@ -110,35 +110,4 @@ public class EmployeeDataHandler {
         System.out.println("Record updated.");
     }
 
-    public static void main(String[] args) {
-
-        String[] employeeData = {
-                "1",
-                "Garcia",
-                "Manuel III",
-                "10/11/1983",
-                "Valero Carpark Building Valero Street 1227, Makati City",
-                "966-860-270",
-                "44-4506057-3",
-                "820126853951",
-                "442-605-657-000",
-                "691295330870",
-                "Regular",
-                "Chief Executive Officer",
-                "Corporate",
-                "N/A",
-                "90000",
-                "1500",
-                "2000",
-                "1000",
-                "45000",
-        };
-
-        try {
-            updateEmployeeRecord(1, employeeData);
-        } catch (IOException | CsvException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 }
