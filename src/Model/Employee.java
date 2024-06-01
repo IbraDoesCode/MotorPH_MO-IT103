@@ -130,4 +130,8 @@ public class Employee {
         this.hourlyRate = hourlyRate;
     }
 
+    public String toString(){
+        return "Employee#: " + employeeID + " Employee name: " + firstName + " " + lastName + " \n";
+    }
+
 }

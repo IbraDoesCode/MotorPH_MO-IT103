@@ -45,10 +45,10 @@ public class LoginController {
             AlertUtil.showAlert(Alert.AlertType.INFORMATION, "Login Success", "Welcome " + user.getFirst_name());
             EmployeeInterface.initialize(event, employee);
 
-        } catch (IOException | CsvException Fileexception) {
-            AlertUtil.showAlert(Alert.AlertType.ERROR, "Database Error", "Something went wrong");
+        } catch (IOException | CsvException e) {
+            AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", e.getMessage());
         } catch (Exception e) {
-            AlertUtil.showAlert(Alert.AlertType.ERROR, e.getMessage(), "Something went wrong");
+            AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", e.getMessage());
         }
     }
 }

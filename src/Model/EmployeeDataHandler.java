@@ -1,8 +1,6 @@
 package Model;
 
 import com.opencsv.exceptions.CsvException;
-import javafx.scene.control.Alert;
-import ui.AlertUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +14,14 @@ public class EmployeeDataHandler {
         List<String[]> rows = CSVUtils.retrieveCSVData(EMPLOYEES_DATA_FILE);
         List<Employee> employees = new ArrayList<>();
 
+        boolean firstRow = true;
+
         for (String[] row : rows) {
+            // skip column 0 headers.
+            if (firstRow) {
+                firstRow = false;
+                continue;
+            }
             Employee employee = new Employee(
                     Integer.parseInt(row[0]),
                     row[1],
@@ -69,13 +74,71 @@ public class EmployeeDataHandler {
             }
         }
 
-        if (!found){
+        if (!found) {
             System.out.println("EmployeeID: " + employee_id + " not found");
             return;
         }
 
         CSVUtils.writeDataToCSV(EMPLOYEES_DATA_FILE, csvdata);
         System.out.println("Record deleted.");
+    }
+
+    public static void updateEmployeeRecord(int employee_id, String[] newData) throws IOException, CsvException {
+        List<String[]> csvdata = CSVUtils.retrieveCSVData(EMPLOYEES_DATA_FILE);
+        boolean found = false;
+
+        // Start loop at index 1 to skip headers.
+        for (int i = 1; i < csvdata.size(); i++) {
+            int id = Integer.parseInt(csvdata.get(i)[0]);
+            if (id == employee_id) {
+                if (newData.length == csvdata.get(i).length) {
+                    csvdata.set(i, newData);
+                    found = true;
+                    break;
+                } else {
+                    System.out.println("Expected data: " + csvdata.get(i).length + " received: " + newData.length);
+                }
+            }
+        }
+
+        if (!found) {
+            System.out.println("EmployeeID: " + employee_id + " not found");
+            return;
+        }
+
+        CSVUtils.writeDataToCSV(EMPLOYEES_DATA_FILE, csvdata);
+        System.out.println("Record updated.");
+    }
+
+    public static void main(String[] args) {
+
+        String[] employeeData = {
+                "1",
+                "Garcia",
+                "Manuel III",
+                "10/11/1983",
+                "Valero Carpark Building Valero Street 1227, Makati City",
+                "966-860-270",
+                "44-4506057-3",
+                "820126853951",
+                "442-605-657-000",
+                "691295330870",
+                "Regular",
+                "Chief Executive Officer",
+                "Corporate",
+                "N/A",
+                "90000",
+                "1500",
+                "2000",
+                "1000",
+                "45000",
+        };
+
+        try {
+            updateEmployeeRecord(1, employeeData);
+        } catch (IOException | CsvException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

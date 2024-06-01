@@ -16,7 +16,6 @@ public class CSVUtils {
         List<String[]> data = new ArrayList<String[]>();
         try (CSVReader csvReader = new CSVReader(new FileReader(filepath))) {
             String[] row;
-            csvReader.skip(1);
 
             while ((row = csvReader.readNext()) != null) {
                 data.add(row);

@@ -13,8 +13,13 @@ public class UserDataHandler {
     public static List<User> retrieveUserCredentials() throws IOException, CsvException{
         List<String[]> rows = CSVUtils.retrieveCSVData(USERS_CREDENTIALS_FILE);
         List<User> users = new ArrayList<>();
+        boolean firstRow = true;
 
         for (String[] row : rows) {
+            if (firstRow) {
+                firstRow = false;
+                continue;
+            }
             users.add(new User(
                     Integer.parseInt(row[0]),
                     row[1],
