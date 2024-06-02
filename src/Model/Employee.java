@@ -5,6 +5,8 @@ public class Employee {
     private int employeeID;
     private String lastName;
     private String firstName;
+
+
     private String birthday;
     private String address;
     private String phoneNumber;
@@ -25,6 +27,10 @@ public class Employee {
 
     public int getEmployeeID() {
         return employeeID;
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
     }
 
     public String getLastName() {
@@ -130,7 +136,7 @@ public class Employee {
         this.hourlyRate = hourlyRate;
     }
 
-    public String toString(){
+    public String toString() {
         return "Employee#: " + employeeID + " Employee name: " + firstName + " " + lastName + " \n";
     }
 

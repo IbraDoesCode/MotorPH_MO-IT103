@@ -1,20 +1,42 @@
 package Controller;
 
 import Model.Employee;
+import Model.EmployeeDataHandler;
+import com.opencsv.exceptions.CsvException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import org.w3c.dom.Text;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.io.IOException;
+import java.util.List;
 
 
-public class EmployeeInterfaceController {
+public class MainInterfaceController {
 
     @FXML
     private TabPane tabPane;
     @FXML
     private Tab employeeManagement_Tab;
+
+    @FXML
+    private TableView<Employee> employeeTable;
+    @FXML
+    private TableColumn<Employee, Integer> employeeID_Column;
+    @FXML
+    private TableColumn<Employee, String> lastName_Column;
+    @FXML
+    private TableColumn<Employee, String> firstName_Column;
+    @FXML
+    private TableColumn<Employee, String> sssNo_Column;
+    @FXML
+    private TableColumn<Employee, String> philhealthNo_Column;
+    @FXML
+    private TableColumn<Employee, String> pagibigNo_Column;
+    @FXML
+    private TableColumn<Employee, String> tinNo_Column;
+
 
     @FXML
     private TextField fullname_TextField;
@@ -71,9 +93,9 @@ public class EmployeeInterfaceController {
     @FXML
     private TextField net_TextField;
 
-    @FXML
-    public void setEmployeeDetails(Employee employee){
-        fullname_TextField.setText(employee.getFirstName() + " " + employee.getLastName());
+
+    public void setEmployeeDetails(Employee employee) {
+        fullname_TextField.setText(employee.getFullName());
         dob_TextField.setText(employee.getBirthday());
         contactNo_TextField.setText(employee.getPhoneNumber());
         address_TextArea.setText(employee.getAddress());
@@ -99,6 +121,26 @@ public class EmployeeInterfaceController {
 
     public void hideAdminComponents() {
         tabPane.getTabs().remove(employeeManagement_Tab);
+    }
+
+    public void initializeTableView() {
+        employeeID_Column.setCellValueFactory(new PropertyValueFactory<>("employeeID"));
+        lastName_Column.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        firstName_Column.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        sssNo_Column.setCellValueFactory(new PropertyValueFactory<>("sssNumber"));
+        philhealthNo_Column.setCellValueFactory(new PropertyValueFactory<>("philhealthNumber"));
+        tinNo_Column.setCellValueFactory(new PropertyValueFactory<>("pagibigNumber"));
+        pagibigNo_Column.setCellValueFactory(new PropertyValueFactory<>("tinNumber"));
+    }
+
+    public void loadEmployeeData() {
+        try {
+            List<Employee> employees = EmployeeDataHandler.retrieveEmployees();
+            ObservableList<Employee> employeeObservableList = FXCollections.observableArrayList(employees);
+            employeeTable.setItems(employeeObservableList);
+        } catch (IOException | CsvException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -3,7 +3,7 @@ package Controller;
 import Model.DataHandler;
 import Model.Employee;
 import Model.User;
-import View.EmployeeInterface;
+import View.MainInterface;
 import com.opencsv.exceptions.CsvException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,7 +44,8 @@ public class LoginController {
 
             AlertUtil.showAlert(Alert.AlertType.INFORMATION, "Login Success", "Welcome " + user.getFirst_name());
 
-            EmployeeInterfaceController controller = EmployeeInterface.initializeComponents(event, employee);
+            MainInterfaceController controller = MainInterface.initializeComponents(event, employee);
+
             if (!user.isAdmin()) {
                 controller.hideAdminComponents();
             }
@@ -53,6 +54,7 @@ public class LoginController {
             AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", e.getMessage());
         } catch (Exception e) {
             AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 }
