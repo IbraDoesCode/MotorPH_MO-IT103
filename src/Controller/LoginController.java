@@ -43,7 +43,11 @@ public class LoginController {
             Employee employee = DataHandler.retrieveEmployeeByID(user.getEmployee_id());
 
             AlertUtil.showAlert(Alert.AlertType.INFORMATION, "Login Success", "Welcome " + user.getFirst_name());
-            EmployeeInterface.initialize(event, employee);
+
+            EmployeeInterfaceController controller = EmployeeInterface.initializeComponents(event, employee);
+            if (!user.isAdmin()) {
+                controller.hideAdminComponents();
+            }
 
         } catch (IOException | CsvException e) {
             AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", e.getMessage());

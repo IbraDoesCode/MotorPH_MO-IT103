@@ -14,9 +14,9 @@
 
 <AnchorPane maxHeight="500.0" maxWidth="700.0" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: F0FFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmployeeInterfaceController">
    <children>
-      <TabPane prefHeight="500.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPane" prefHeight="500.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab id="myProfile_Tab" text="My Profile">
+          <Tab id="myProfile_Tab" fx:id="myProfile_Tab" text="My Profile">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263F73FF; -fx-border-width: 5;">
                      <children>
@@ -24,7 +24,7 @@
                            <children>
                               <Pane prefHeight="380.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;">
                                  <children>
-                                    <VBox layoutX="14.0" layoutY="14.0">
+                                    <VBox layoutX="14.0" layoutY="14.0" spacing="5.0">
                                        <children>
                                           <Label text="Full Name:" textFill="WHITE" />
                                           <TextField id="fullname_TextField" fx:id="fullname_TextField" editable="false" prefHeight="25.0" prefWidth="160.0" />
@@ -40,7 +40,7 @@
                               </Pane>
                               <Pane prefHeight="380.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;">
                                  <children>
-                                    <VBox layoutX="20.0" layoutY="14.0">
+                                    <VBox layoutX="20.0" layoutY="14.0" spacing="5.0">
                                        <children>
                                           <Label text="Employee ID:" textFill="WHITE" />
                                           <TextField id="employeeID_TextField" fx:id="employeeId_TextField" editable="false" prefHeight="25.0" prefWidth="160.0" />
@@ -58,7 +58,7 @@
                               </Pane>
                               <Pane prefHeight="380.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;">
                                  <children>
-                                    <VBox layoutX="20.0" layoutY="14.0">
+                                    <VBox layoutX="20.0" layoutY="14.0" spacing="5.0">
                                        <children>
                                           <Label text="SSS #:" textFill="WHITE" />
                                           <TextField id="sss_TextField" fx:id="sss_TextField" editable="false" prefHeight="26.0" prefWidth="160.0" />
@@ -96,28 +96,76 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab id="payslip_Tab" text="Pay slip">
+          <Tab id="payslip_Tab" fx:id="paySlip_Tab" text="Pay slip">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263F73FF;">
                      <children>
+                        <Label layoutX="11.0" layoutY="22.0" text="Payroll Profile" textFill="WHITE">
+                           <font>
+                              <Font name="Yu Gothic UI Semibold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="359.0" layoutY="22.0" text="Earnings:" textFill="WHITE">
+                           <font>
+                              <Font name="Yu Gothic UI Semibold" size="12.0" />
+                           </font>
+                        </Label>
                         <HBox layoutX="11.0" layoutY="46.0" prefHeight="380.0" prefWidth="678.0" spacing="20.0">
                            <children>
                               <Pane prefHeight="200.0" prefWidth="329.0" style="-fx-border-color: black;">
                                  <padding>
                                     <Insets left="10.0" right="10.0" />
                                  </padding>
+                                 <children>
+                                    <VBox layoutX="14.0" layoutY="10.0" spacing="5.0">
+                                       <children>
+                                          <Label text="Basic Salary:" textFill="WHITE" />
+                                          <TextField fx:id="basicSalary_TextField" editable="false" />
+                                          <Label text="Rice Subsidy:" textFill="WHITE" />
+                                          <TextField fx:id="riceSubsidy_TextField" editable="false" />
+                                          <Label text="Phone Allowance:" textFill="#fffcfc" />
+                                          <TextField fx:id="phoneAllowance_TextField" editable="false" />
+                                          <Label layoutX="10.0" layoutY="96.0" text="Clothing Allowance:" textFill="#fffcfc" />
+                                             <TextField fx:id="clothingAllowance_TextField" editable="false" />
+                                          <Label layoutX="10.0" layoutY="140.0" text="Gross Semi-monthly Rate:" textFill="#fffcfc" />
+                                          <TextField fx:id="semiMonthly_TextField" editable="false" layoutX="10.0" layoutY="157.0" />
+                                          <Label layoutX="10.0" layoutY="183.0" text="Hourly Rate:" textFill="#fffcfc" />
+                                          <TextField fx:id="hourlyRate_TextField" editable="false" layoutX="10.0" layoutY="200.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
                               </Pane>
-                              <Pane prefHeight="200.0" prefWidth="329.0" style="-fx-border-color: Black;" />
+                              <Pane prefHeight="200.0" prefWidth="329.0" style="-fx-border-color: Black;">
+                                 <children>
+                                    <VBox layoutX="14.0" layoutY="14.0">
+                                       <children>
+                                          <Label text="Hours worked:" textFill="WHITE" />
+                                          <TextField fx:id="hoursWorked_TextField" editable="false" />
+                                          <Label text="Gross:" textFill="WHITE" />
+                                          <TextField fx:id="gross_TextField" editable="false" />
+                                          <Label text="SSS:" textFill="#fffcfc" />
+                                          <TextField fx:id="sssAmount_TextField" editable="false" />
+                                          <Label layoutX="10.0" layoutY="96.0" text="PHIC:" textFill="#fffcfc" />
+                                          <TextField fx:id="phic_TextField" editable="false" />
+                                          <Label layoutX="10.0" layoutY="140.0" text="HDMF:" textFill="#fffcfc" />
+                                          <TextField fx:id="hdmf_TextField" editable="false" layoutX="10.0" layoutY="157.0" />
+                                          <Label layoutX="10.0" layoutY="183.0" text="Witholding Tax:" textFill="#fffcfc" />
+                                          <TextField fx:id="tax_TextField" editable="false" layoutX="10.0" layoutY="200.0" />
+                                          <Label layoutX="10.0" layoutY="274.0" text="Net:" textFill="#fffcfc" />
+                                          <TextField fx:id="net_TextField" editable="false" layoutX="10.0" layoutY="296.0" />
+                                       </children>
+                                    </VBox>
+                                 </children></Pane>
                            </children>
                         </HBox>
-                        <Label layoutX="11.0" layoutY="22.0" text="Payroll Profile" textFill="WHITE">
-                           <font>
-                              <Font name="Yu Gothic UI Semibold" size="12.0" />
-                           </font>
-                        </Label>
                      </children></AnchorPane>
             </content>
           </Tab>
+            <Tab fx:id="employeeManagement_Tab" text="Employee Management">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>

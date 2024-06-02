@@ -68,6 +68,7 @@ public class EmployeeDataHandler {
             // Retrieve ID# from current row (index i) at the first column (index 0).
             int id = Integer.parseInt(csvdata.get(i)[0]);
             if (id == employee_id) {
+                // if found remove current row from List.
                 csvdata.remove(i);
                 found = true;
                 break;
@@ -79,6 +80,7 @@ public class EmployeeDataHandler {
             return;
         }
 
+        // Write new List to CSV
         CSVUtils.writeDataToCSV(EMPLOYEES_DATA_FILE, csvdata);
         System.out.println("Record deleted.");
     }

@@ -13,22 +13,20 @@ import java.io.IOException;
 
 public class EmployeeInterface {
 
-    public static void initialize(ActionEvent event, Employee employee){
+    public static EmployeeInterfaceController initializeComponents(ActionEvent event, Employee employee) throws IOException {
+        FXMLLoader loader = new FXMLLoader(EmployeeInterface.class.getResource("/View/EmployeeInterface.fxml"));
+        Parent root = loader.load();
 
-        try {
-            FXMLLoader loader = new FXMLLoader(EmployeeInterface.class.getResource("/View/EmployeeInterface.fxml"));
-            Parent root = loader.load();
+        EmployeeInterfaceController controller = loader.getController();
+        controller.setEmployeeDetails(employee);
+        controller.setPayrollDetails(employee);
 
-            EmployeeInterfaceController employeeInterface = loader.getController();
-            employeeInterface.setEmployeeDetails(employee);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return controller;
     }
 
 }
