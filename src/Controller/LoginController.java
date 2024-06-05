@@ -3,7 +3,6 @@ package Controller;
 import Model.DataHandler;
 import Model.Employee;
 import Model.User;
-import View.MainInterface;
 import com.opencsv.exceptions.CsvException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,10 +43,10 @@ public class LoginController {
 
             AlertUtil.showAlert(Alert.AlertType.INFORMATION, "Login Success", "Welcome " + user.getFirst_name());
 
-            MainInterfaceController controller = MainInterface.initializeComponents(event, employee);
+            HomeInterfaceController controller = HomeInterfaceController.initializeUI(event, employee);
 
             if (!user.isAdmin()) {
-                controller.hideAdminComponents();
+                controller.disableAdminButtons();
             }
 
         } catch (IOException | CsvException e) {

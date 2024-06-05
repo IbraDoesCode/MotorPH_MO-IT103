@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 public class Start extends Application {
     @Override
     public void start(Stage stage) throws Exception {
+
         try{
             Parent root = FXMLLoader.load(getClass().getResource("/View/LoginForm.fxml"));
             Scene scene = new Scene(root);
@@ -18,7 +19,6 @@ public class Start extends Application {
             e.printStackTrace();
         }
     }
-
     public static void main(String[] args) {
         launch(args);
     }
