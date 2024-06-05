@@ -65,7 +65,12 @@ public class HomeInterfaceController {
 
     @FXML
     public void switchToPayslipInterface(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/View/payslipInterface.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/payslipInterface.fxml"));
+        Parent root = loader.load();
+
+        payslipInterfaceController  payDetailsController = loader.getController();
+        payDetailsController.setPayrollDetails(employee);
+
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
     }
