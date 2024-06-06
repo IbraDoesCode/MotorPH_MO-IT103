@@ -3,10 +3,15 @@ package Controller;
 import Model.Employee;
 import Services.AttendanceService;
 import com.opencsv.exceptions.CsvException;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import ui.AlertUtil;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class payslipInterfaceController {
@@ -28,7 +33,10 @@ public class payslipInterfaceController {
     @FXML
     private ComboBox<String> comboBox;
 
+    private Employee employee;
+
     public void initialize(Employee employee) {
+        this.employee = employee;
         setPayrollDetails(employee);
         initializeComboBox();
     }
@@ -40,14 +48,35 @@ public class payslipInterfaceController {
         clothingAllowance_TextField.setText(String.valueOf(employee.getClothingAllowance()));
         semiMonthly_TextField.setText(String.valueOf(employee.getGrossSemiMonthlyRate()));
         hourlyRate_TextField.setText(String.valueOf(employee.getHourlyRate()));
-        hoursWorked_TextField.setText(String.valueOf(retrieveHoursWorked(employee.getEmployeeID())));
+        displayHoursWorked();
     }
 
     private void initializeComboBox() {
-        String[] months = {"","January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+        String[] months = {"", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
         comboBox.getItems().addAll(months);
         comboBox.getItems().removeFirst();
         comboBox.getSelectionModel().select(0);
+
+        comboBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+                displayHoursWorked();
+            }
+        });
+    }
+
+    private void displayHoursWorked() {
+        try {
+            int employeeId = employee.getEmployeeID();
+            double hoursWorked = retrieveHoursWorked(employeeId);
+            hoursWorked_TextField.setText(String.valueOf(hoursWorked));
+        } catch (FileNotFoundException e) {
+            String selectMonth = comboBox.getSelectionModel().getSelectedItem();
+            AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", "Record for " + selectMonth + " not found");
+            comboBox.getSelectionModel().select(0);
+        } catch (IOException | CsvException e) {
+            AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while retrieving hours worked.");
+        }
     }
 
     private int getMonthSelected() {
@@ -55,14 +84,9 @@ public class payslipInterfaceController {
         return selectedIndex == -1 ? 1 : selectedIndex + 1;
     }
 
-    private double retrieveHoursWorked(int employee_id) {
-        double totalHours = 0;
+    private double retrieveHoursWorked(int employee_id) throws IOException, CsvException{
         int month = getMonthSelected();
-        try {
-            totalHours = AttendanceService.retrieveHoursWorked(employee_id, month);
-        } catch (IOException | CsvException e) {
-            throw new RuntimeException(e);
-        }
-        return totalHours;
+        return AttendanceService.retrieveHoursWorked(employee_id, month);
+
     }
 }
