@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="650.0" style="-fx-background-color: #f6f7eb;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.payslipInterfaceController">
+<AnchorPane prefHeight="450.0" prefWidth="650.0" style="-fx-background-color: #f6f7eb;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PayslipInterfaceController">
    <children>
       <Label layoutX="27.0" layoutY="21.0" text="Payroll Profile">
          <font>

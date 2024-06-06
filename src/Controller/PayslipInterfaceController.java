@@ -14,7 +14,7 @@ import ui.AlertUtil;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class payslipInterfaceController {
+public class PayslipInterfaceController {
 
     @FXML
     private TextField basicSalary_TextField;
@@ -71,8 +71,8 @@ public class payslipInterfaceController {
             double hoursWorked = retrieveHoursWorked(employeeId);
             hoursWorked_TextField.setText(String.valueOf(hoursWorked));
         } catch (FileNotFoundException e) {
-            String selectMonth = comboBox.getSelectionModel().getSelectedItem();
-            AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", "Record for " + selectMonth + " not found");
+            String selectedMonth = comboBox.getSelectionModel().getSelectedItem();
+            AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", "Record for " + selectedMonth + " not found");
             comboBox.getSelectionModel().select(0);
         } catch (IOException | CsvException e) {
             AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while retrieving hours worked.");

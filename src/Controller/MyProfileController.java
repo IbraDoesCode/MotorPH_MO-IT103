@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class myProfileController {
+public class MyProfileController {
 
     @FXML
     private TextField fullname_TextField;

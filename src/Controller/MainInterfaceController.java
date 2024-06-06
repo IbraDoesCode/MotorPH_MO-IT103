@@ -53,10 +53,10 @@ public class MainInterfaceController {
 
     @FXML
     public void switchToMyProfileInterface(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/myProfileInterface.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MyProfileInterface.fxml"));
         Parent root = loader.load();
 
-        myProfileController profileController = loader.getController();
+        MyProfileController profileController = loader.getController();
         profileController.setEmployeeDetails(employee);
 
         contentArea.getChildren().removeAll();
@@ -65,10 +65,10 @@ public class MainInterfaceController {
 
     @FXML
     public void switchToPayslipInterface(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/payslipInterface.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/PayslipInterface.fxml"));
         Parent root = loader.load();
 
-        payslipInterfaceController  payDetailsController = loader.getController();
+        PayslipInterfaceController payDetailsController = loader.getController();
         payDetailsController.initialize(employee);
 
         contentArea.getChildren().removeAll();
