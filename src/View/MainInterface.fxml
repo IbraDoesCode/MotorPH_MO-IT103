@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeInterfaceController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainInterfaceController">
    <top>
       <Pane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #e94f37;" BorderPane.alignment="CENTER">
          <children>
@@ -30,11 +30,11 @@
          <children>
             <VBox layoutY="121.0" spacing="20.0">
                <children>
-                  <Button fx:id="myProfile_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" mnemonicParsing="false" onAction="#switchToMyProfileInterface" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: white;" text="My Profile" />
-                  <Button fx:id="payrollProfile_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" mnemonicParsing="false" onAction="#switchToPayslipInterface" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: white;" text="Payroll Profile" />
-                  <Button fx:id="manage_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" mnemonicParsing="false" onAction="#switchToManageInterface" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: white;" text="Manage" />
-                  <Button fx:id="payroll_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="10.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: white;" text="Payroll" />
-                  <Button fx:id="logout_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="10.0" layoutY="147.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: white;" text="Logout" />
+                  <Button fx:id="myProfile_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" mnemonicParsing="false" onAction="#switchToMyProfileInterface" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #2E3234;" text="My Profile" textFill="WHITE" />
+                  <Button fx:id="payrollProfile_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" mnemonicParsing="false" onAction="#switchToPayslipInterface" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #2E3234;" text="Payroll Profile" textFill="WHITE" />
+                  <Button fx:id="manage_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" mnemonicParsing="false" onAction="#switchToManageInterface" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #2E3234;" text="Manage" textFill="WHITE" />
+                  <Button fx:id="payroll_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="10.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #2E3234;" text="Payroll" textFill="WHITE" />
+                  <Button fx:id="logout_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="10.0" layoutY="147.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #2E3234;" text="Logout" textFill="WHITE" />
                </children>
             </VBox>
          </children>
@@ -47,7 +47,7 @@
                <children>
                   <Label fx:id="welcome_Label" alignment="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="30.0" prefWidth="632.0" text="Welcome User!">
                      <font>
-                        <Font name="Verdana Bold" size="24.0" />
+                        <Font name="Verdana Bold Italic" size="24.0" />
                      </font></Label>
                </children>
             </Pane>

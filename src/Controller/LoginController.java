@@ -43,7 +43,7 @@ public class LoginController {
 
             AlertUtil.showAlert(Alert.AlertType.INFORMATION, "Login Success", "Welcome " + user.getFirst_name());
 
-            HomeInterfaceController controller = HomeInterfaceController.initializeUI(event, employee);
+            MainInterfaceController controller = MainInterfaceController.initializeUI(event, employee);
 
             if (!user.isAdmin()) {
                 controller.disableAdminButtons();
