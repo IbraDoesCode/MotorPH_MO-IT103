@@ -4,6 +4,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -28,5 +29,10 @@ public class CSVUtils {
         try (CSVWriter csvWriter = new CSVWriter(new FileWriter(filepath))) {
             csvWriter.writeAll(data);
         }
+    }
+
+    public static boolean fileExists(String filepath) {
+        File file = new File(filepath);
+        return file.exists();
     }
 }
