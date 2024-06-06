@@ -21,7 +21,7 @@ public class CSVUtils {
                 data.add(row);
             }
         }
-        return data;
+        return data.subList(1, data.size());
     }
 
     public static void writeDataToCSV(String filepath, List<String[]> data) throws IOException, CsvException {

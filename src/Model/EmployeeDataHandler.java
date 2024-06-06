@@ -11,17 +11,11 @@ public class EmployeeDataHandler {
     private static final String EMPLOYEES_DATA_FILE = "Data/Employee_data.csv";
 
     public static List<Employee> retrieveEmployees() throws IOException, CsvException {
-        List<String[]> rows = CSVUtils.retrieveCSVData(EMPLOYEES_DATA_FILE);
+        List<String[]> data = CSVUtils.retrieveCSVData(EMPLOYEES_DATA_FILE);
         List<Employee> employees = new ArrayList<>();
 
-        boolean firstRow = true;
+        for (String[] row : data) {
 
-        for (String[] row : rows) {
-            // skip column 0 headers.
-            if (firstRow) {
-                firstRow = false;
-                continue;
-            }
             Employee employee = new Employee(
                     Integer.parseInt(row[0]),
                     row[1],

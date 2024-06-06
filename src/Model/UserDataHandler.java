@@ -10,16 +10,11 @@ public class UserDataHandler {
 
     private static final String USERS_CREDENTIALS_FILE = "Data/User_credentials.csv";
 
-    public static List<User> retrieveUserCredentials() throws IOException, CsvException{
-        List<String[]> rows = CSVUtils.retrieveCSVData(USERS_CREDENTIALS_FILE);
+    public static List<User> retrieveUserCredentials() throws IOException, CsvException {
+        List<String[]> data = CSVUtils.retrieveCSVData(USERS_CREDENTIALS_FILE);
         List<User> users = new ArrayList<>();
-        boolean firstRow = true;
 
-        for (String[] row : rows) {
-            if (firstRow) {
-                firstRow = false;
-                continue;
-            }
+        for (String[] row : data) {
             users.add(new User(
                     Integer.parseInt(row[0]),
                     row[1],
@@ -34,8 +29,8 @@ public class UserDataHandler {
         return users;
     }
 
-    public static User retrieveUserCredentialByUsername(String username) throws IOException, CsvException{
-        List<User>users = retrieveUserCredentials();
+    public static User retrieveUserCredentialByUsername(String username) throws IOException, CsvException {
+        List<User> users = retrieveUserCredentials();
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 return user;
