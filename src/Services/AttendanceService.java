@@ -5,22 +5,18 @@ import Model.Employee;
 import Model.EmployeeDataHandler;
 import com.opencsv.exceptions.CsvException;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class AttendanceService {
 
-    private static String retrieveAttendanceFile(int month) throws FileNotFoundException {
+    private static String retrieveAttendanceFile(int month) {
         String[] months = {"", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"};
-        if (month < 1 || month > 12) {
-            throw new IllegalArgumentException("Invalid month: " + month);
+        if (month < 1 | month > 12) {
+            throw new IllegalArgumentException("Invalid month");
         }
-        String filepath = "Data/Attendance/" + months[month] + "_attendance.csv";
-        if (!CSVUtils.fileExists(filepath)) {
-            throw new FileNotFoundException("No record found for month: " + month);
-        }
-        return filepath;
+        return "Data/Attendance/" + months[month] + "_attendance.csv";
     }
 
     private static List<String[]> retrieveAttendanceData(int month) throws IOException, CsvException {
@@ -28,7 +24,7 @@ public class AttendanceService {
         return CSVUtils.retrieveCSVData(filepath);
     }
 
-    public static double retrieveHoursWorked(int employee_id, int month) throws IOException, CsvException {
+    public static double retrieveHoursWorked(int employee_id, int month) throws IOException, CsvException{
         List<String[]> attendanceData = retrieveAttendanceData(month);
         List<Employee> employeeList = EmployeeDataHandler.retrieveEmployees();
         double totalHours = 0;
@@ -43,7 +39,6 @@ public class AttendanceService {
         } else {
             throw new IllegalArgumentException("Employee ID not found");
         }
-        totalHours = Math.round(totalHours * 100.0) / 100.0;
         return totalHours;
     }
 
@@ -59,4 +54,8 @@ public class AttendanceService {
         return (timeOutHour - timeInHour) + (timeOutMinute - timeInMinute) / 60.0;
     }
 
+    public static void main(String[] args) throws IOException, CsvException {
+        double hours = retrieveHoursWorked(35, 4);
+        System.out.println(hours);
+    }
 }
