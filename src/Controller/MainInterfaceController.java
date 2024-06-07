@@ -52,6 +52,11 @@ public class MainInterfaceController {
     }
 
     @FXML
+    private void setWelcomeLabel(Employee employee) {
+        welcome_Label.setText("Welcome " + employee.getFirstName() + " " + employee.getLastName() + " !");
+    }
+
+    @FXML
     public void switchToMyProfileInterface(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MyProfileInterface.fxml"));
         Parent root = loader.load();
@@ -76,8 +81,15 @@ public class MainInterfaceController {
     }
 
     @FXML
-    private void setWelcomeLabel(Employee employee) {
-        welcome_Label.setText("Welcome " + employee.getFirstName() + " " + employee.getLastName() + " !");
+    private void switchToManageInterface(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EmployeeManagementInterface.fxml"));
+        Parent root = loader.load();
+
+        EmployeeManagementController employeeManagementController = loader.getController();
+        employeeManagementController.initialize();
+
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(root);
     }
 
     public void disableAdminButtons() {
@@ -92,18 +104,6 @@ public class MainInterfaceController {
         Scene loginScene = new Scene(loginRoot);
         stage.setScene(loginScene);
         stage.show();
-    }
-
-    @FXML
-    private void switchToManageInterface(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ManageInterface.fxml"));
-        Parent root = loader.load();
-
-        ManageInterfaceController manageInterfaceController = loader.getController();
-        manageInterfaceController.initialize();
-
-        contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(root);
     }
 
 }
