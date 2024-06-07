@@ -88,7 +88,7 @@
          </font>
       </Label>
       <Button fx:id="update_button" layoutX="585.0" layoutY="389.0" mnemonicParsing="false" prefWidth="55.0" text="Update" />
-      <Button fx:id="delete_button" layoutX="521.0" layoutY="389.0" mnemonicParsing="false" prefWidth="55.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE" />
+      <Button fx:id="delete_button" layoutX="521.0" layoutY="389.0" mnemonicParsing="false" onAction="#deleteEmployeeRecord" prefWidth="55.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE" />
       <Button fx:id="back_button" layoutX="22.0" layoutY="389.0" mnemonicParsing="false" onAction="#switchToEmployeeManagementInterface" prefWidth="55.0" text="Back" />
    </children>
 </AnchorPane>

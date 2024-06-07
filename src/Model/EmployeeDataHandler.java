@@ -9,6 +9,28 @@ import java.util.List;
 public class EmployeeDataHandler {
 
     private static final String EMPLOYEES_DATA_FILE = "Data/Employee_data.csv";
+    private static final String[] HEADERS = {
+            "Employee #",
+            "Last Name",
+            "First Name",
+            "Birthday",
+            "Address",
+            "Phone Number",
+            "SSS #",
+            "Philhealth #",
+            "TIN #",
+            "Pag-ibig #",
+            "Status",
+            "Position",
+            "Department",
+            "Immediate Supervisor",
+            "Basic Salary",
+            "Rice Subsidy",
+            "Phone Allowance",
+            "Clothing Allowance",
+            "Gross Semi-monthly Rate",
+            "Hourly Rate"
+    };
 
     public static List<Employee> retrieveEmployees() throws IOException, CsvException {
         List<String[]> data = CSVUtils.retrieveCSVData(EMPLOYEES_DATA_FILE);
@@ -75,7 +97,7 @@ public class EmployeeDataHandler {
         }
 
         // Write new List to CSV
-        CSVUtils.writeDataToCSV(EMPLOYEES_DATA_FILE, csvdata);
+        CSVUtils.writeDataToCSV(EMPLOYEES_DATA_FILE, csvdata, HEADERS);
         System.out.println("Record deleted.");
     }
 
@@ -102,7 +124,7 @@ public class EmployeeDataHandler {
             return;
         }
 
-        CSVUtils.writeDataToCSV(EMPLOYEES_DATA_FILE, csvdata);
+        CSVUtils.writeDataToCSV(EMPLOYEES_DATA_FILE, csvdata, HEADERS);
         System.out.println("Record updated.");
     }
 

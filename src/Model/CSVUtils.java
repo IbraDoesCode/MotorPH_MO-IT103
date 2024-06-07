@@ -25,7 +25,14 @@ public class CSVUtils {
         return data.subList(1, data.size());
     }
 
-    public static void writeDataToCSV(String filepath, List<String[]> data) throws IOException, CsvException {
+    public static void writeDataToCSV(String filepath, List<String[]> data, String[] headers) throws IOException, CsvException {
+        try (CSVWriter csvWriter = new CSVWriter(new FileWriter(filepath))) {
+            csvWriter.writeNext(headers);
+            csvWriter.writeAll(data);
+        }
+    }
+
+    public static void writeDataToCSVWithoutHeader(String filepath, List<String[]> data) throws IOException, CsvException {
         try (CSVWriter csvWriter = new CSVWriter(new FileWriter(filepath))) {
             csvWriter.writeAll(data);
         }

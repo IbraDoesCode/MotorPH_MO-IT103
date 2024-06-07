@@ -25,7 +25,8 @@ public class AttendanceService {
 
     private static List<String[]> retrieveAttendanceData(int month) throws IOException, CsvException {
         String filepath = retrieveAttendanceFile(month);
-        return CSVUtils.retrieveCSVData(filepath);
+        List<String[]> data = CSVUtils.retrieveCSVData(filepath);
+        return data.subList(1, data.size());
     }
 
     public static double retrieveHoursWorked(int employee_id, int month) throws IOException, CsvException {

@@ -1,14 +1,18 @@
 package Controller;
 
 import Model.Employee;
+import Model.EmployeeDataHandler;
+import com.opencsv.exceptions.CsvException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
+import ui.AlertUtil;
 
 import java.io.IOException;
 
@@ -72,5 +76,21 @@ public class ViewEmployeeController {
 
         EmployeeManagementController employeeManagementController = loader.getController();
         employeeManagementController.initialize();
+    }
+
+    @FXML
+    private void deleteEmployeeRecord() {
+        int employee_id = Integer.parseInt(employeeId_TextField.getText());
+        boolean confirmed = AlertUtil.showConfirmationAlert("Warning", "Delete Employee Record?");
+
+        if (confirmed) {
+            try {
+                EmployeeDataHandler.deleteEmployeeRecord(employee_id);
+                AlertUtil.showAlert(Alert.AlertType.INFORMATION, "Success", "Employee Record Deleted.");
+            } catch (IOException | CsvException e) {
+                AlertUtil.showAlert(Alert.AlertType.ERROR, "Error!", e.getMessage());
+            }
+        }
+
     }
 }
