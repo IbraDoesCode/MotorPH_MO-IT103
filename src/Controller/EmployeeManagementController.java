@@ -89,4 +89,16 @@ public class EmployeeManagementController {
         contentArea.getChildren().add(root);
     }
 
+    @FXML
+    private void switchToAddEmployeeInterface(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/AddEmployeeInterface.fxml"));
+        Parent root = loader.load();
+
+        AddEmployeeController controller = loader.getController();
+
+        contentArea = (StackPane) ((Node) event.getSource()).getScene().lookup("#contentArea");
+        contentArea.getChildren().clear();
+        contentArea.getChildren().add(root);
+    }
+
 }

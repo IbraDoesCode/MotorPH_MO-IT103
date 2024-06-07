@@ -127,4 +127,9 @@ public class EmployeeDataHandler {
         System.out.println("Record updated.");
     }
 
+    public static void addEmployeeRecord(String[] newData) throws IOException, CsvException {
+        List<String[]> csvdata = CSVUtils.retrieveCSVData(EMPLOYEES_DATA_FILE);
+        csvdata.add(newData);
+        CSVUtils.writeDataToCSV(EMPLOYEES_DATA_FILE, csvdata, HEADERS);
+    }
 }

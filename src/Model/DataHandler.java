@@ -21,6 +21,10 @@ public class DataHandler {
         EmployeeDataHandler.updateEmployeeRecord(employee_id, newData);
     }
 
+    public static void addEmployeeRecord(String[]newData) throws IOException, CsvException{
+        EmployeeDataHandler.addEmployeeRecord(newData);
+    }
+
     public static List<User> retrieveUserCredentials() throws IOException, CsvException{
         return UserDataHandler.retrieveUserCredentials();
     }

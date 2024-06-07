@@ -101,13 +101,13 @@
             <Font name="Yu Gothic UI Semibold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="update_button" layoutX="585.0" layoutY="389.0" mnemonicParsing="false" onAction="#updateEmployeeRecord" prefWidth="55.0" text="Update" />
-      <Button fx:id="delete_button" layoutX="521.0" layoutY="389.0" mnemonicParsing="false" onAction="#deleteEmployeeRecord" prefWidth="55.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE" />
-      <Button fx:id="back_button" layoutX="22.0" layoutY="389.0" mnemonicParsing="false" onAction="#switchToEmployeeManagementInterface" prefWidth="55.0" text="Back" />
       <Label layoutX="501.0" layoutY="46.0" text="Earnings Details">
          <font>
             <Font name="Yu Gothic UI Semibold" size="12.0" />
          </font>
       </Label>
+      <Button fx:id="update_button" layoutX="585.0" layoutY="389.0" mnemonicParsing="false" onAction="#updateEmployeeRecord" prefWidth="55.0" text="Update" />
+      <Button fx:id="delete_button" layoutX="521.0" layoutY="389.0" mnemonicParsing="false" onAction="#deleteEmployeeRecord" prefWidth="55.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE" />
+      <Button fx:id="back_button" layoutX="22.0" layoutY="389.0" mnemonicParsing="false" onAction="#switchToEmployeeManagementInterface" prefWidth="55.0" text="Back" />
    </children>
 </AnchorPane>
