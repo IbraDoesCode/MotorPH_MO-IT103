@@ -32,12 +32,6 @@ public class CSVUtils {
         }
     }
 
-    public static void writeDataToCSVWithoutHeader(String filepath, List<String[]> data) throws IOException, CsvException {
-        try (CSVWriter csvWriter = new CSVWriter(new FileWriter(filepath))) {
-            csvWriter.writeAll(data);
-        }
-    }
-
     public static boolean fileExists(String filepath) {
         File file = new File(filepath);
         return file.exists();
