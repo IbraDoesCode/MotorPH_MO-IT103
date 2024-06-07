@@ -105,8 +105,7 @@ public class EmployeeDataHandler {
         List<String[]> csvdata = CSVUtils.retrieveCSVData(EMPLOYEES_DATA_FILE);
         boolean found = false;
 
-        // Start loop at index 1 to skip headers.
-        for (int i = 1; i < csvdata.size(); i++) {
+        for (int i = 0; i < csvdata.size(); i++) {
             int id = Integer.parseInt(csvdata.get(i)[0]);
             if (id == employee_id) {
                 if (newData.length == csvdata.get(i).length) {
