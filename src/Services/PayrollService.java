@@ -7,7 +7,8 @@ public class PayrollService {
     }
 
     public static double getHourlyRate(double BasicSalary) {
-        return (BasicSalary / 21) / 8;
+        double hourlyRate = (BasicSalary / 21) / 8;
+        return Math.round(hourlyRate * 100.0) / 100.0;
     }
 
 }

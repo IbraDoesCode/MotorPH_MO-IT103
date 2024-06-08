@@ -22,7 +22,7 @@
                         <Label text="Full Name:" />
                         <TextField id="fullname_TextField" fx:id="fullname_TextField" prefHeight="0.0" prefWidth="120.0" />
                         <Label text="Date of birth:" />
-                        <TextField id="dob_TextField" fx:id="dob_TextField" prefHeight="0.0" prefWidth="120.0" />
+                        <TextField id="dob_TextField" fx:id="dob_TextField" prefHeight="0.0" prefWidth="120.0" promptText="MM/DD/YYYY" />
                         <Label text="Contact No:" />
                         <TextField id="contactno_TextField" fx:id="contactNo_TextField" prefHeight="0.0" prefWidth="120.0" />
                         <Label text="Address:" />
