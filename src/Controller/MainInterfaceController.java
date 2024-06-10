@@ -94,7 +94,6 @@ public class MainInterfaceController {
 
     public void disableAdminButtons() {
         manage_Button.setVisible(false);
-        payroll_Button.setVisible(false);
     }
 
     @FXML

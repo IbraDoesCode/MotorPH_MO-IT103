@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Employee;
 import Services.AttendanceService;
+import Services.PayrollService;
 import com.opencsv.exceptions.CsvException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -31,6 +32,21 @@ public class PayslipInterfaceController {
     @FXML
     private TextField hoursWorked_TextField;
     @FXML
+    private TextField gross_TextField;
+    @FXML
+    private TextField sssAmount_TextField;
+    @FXML
+    private TextField phic_TextField;
+    @FXML
+    private TextField hdmf_TextField;
+    @FXML
+    private TextField tax_TextField;
+    @FXML
+    private TextField allowance_TextField;
+    @FXML
+    private TextField net_TextField;
+
+    @FXML
     private ComboBox<String> comboBox;
 
     private Employee employee;
@@ -49,6 +65,9 @@ public class PayslipInterfaceController {
         semiMonthly_TextField.setText(String.valueOf(employee.getGrossSemiMonthlyRate()));
         hourlyRate_TextField.setText(String.valueOf(employee.getHourlyRate()));
         displayHoursWorked();
+        updateDeductions();
+        displayGross();
+        displayAllowance();
     }
 
     private void initializeComboBox() {
@@ -61,6 +80,8 @@ public class PayslipInterfaceController {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
                 displayHoursWorked();
+                displayGross();
+                updateDeductions();
             }
         });
     }
@@ -88,5 +109,43 @@ public class PayslipInterfaceController {
         int month = getMonthSelected();
         return AttendanceService.retrieveHoursWorked(employee_id, month);
 
+    }
+
+    private void displayGross() {
+        try {
+            int month = getMonthSelected();
+            double gross = PayrollService.calculateGross(employee, month);
+            gross_TextField.setText(String.valueOf(gross));
+        } catch (IOException | CsvException e) {
+            AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while retrieving data");
+        }
+    }
+
+    private void displayAllowance() {
+        try {
+            double totalAllowance = PayrollService.getTotalAllowances(employee);
+            allowance_TextField.setText(String.valueOf(totalAllowance));
+        } catch (IOException | CsvException e) {
+            AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while retrieving data");
+        }
+    }
+
+    private void updateDeductions() {
+        try {
+            double sss = PayrollService.calculateSSS(employee.getBasicSalary());
+            double philhealth = PayrollService.calculatePhilhealth(employee.getBasicSalary());
+            double pagibig = PayrollService.calculatePagibig(employee.getBasicSalary());
+            sssAmount_TextField.setText(String.valueOf(sss));
+            phic_TextField.setText(String.valueOf(philhealth));
+            hdmf_TextField.setText(String.valueOf(pagibig));
+
+            double gross = PayrollService.calculateGross(employee, getMonthSelected());
+            double tax = PayrollService.calculateWithholdingTax(gross);
+            tax_TextField.setText(String.valueOf(tax));
+            double net = PayrollService.calculateNetPay(employee, getMonthSelected());
+            net_TextField.setText(String.valueOf(net));
+        } catch (IOException | CsvException e) {
+            AlertUtil.showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while updating deductions.");
+        }
     }
 }

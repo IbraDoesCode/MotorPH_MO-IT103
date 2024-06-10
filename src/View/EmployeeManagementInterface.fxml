@@ -28,8 +28,7 @@
             <Font name="Verdana Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="compute_button" layoutX="514.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Compute Payroll" />
-      <Button fx:id="add_button" layoutX="392.0" layoutY="390.0" mnemonicParsing="false" onAction="#switchToAddEmployeeInterface" prefHeight="25.0" prefWidth="110.0" text="Add Employee" />
-      <Button fx:id="view_button" layoutX="25.0" layoutY="390.0" mnemonicParsing="false" onAction="#switchToViewEmployeeInterface" prefHeight="25.0" prefWidth="110.0" text="View Details" />
+      <Button fx:id="add_button" layoutX="529.0" layoutY="390.0" mnemonicParsing="false" onAction="#switchToAddEmployeeInterface" prefHeight="25.0" prefWidth="95.0" text="Add Employee" />
+      <Button fx:id="view_button" layoutX="422.0" layoutY="390.0" mnemonicParsing="false" onAction="#switchToViewEmployeeInterface" prefHeight="25.0" prefWidth="95.0" text="View Details" />
    </children>
 </AnchorPane>

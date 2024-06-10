@@ -33,7 +33,6 @@
                   <Button fx:id="myProfile_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" mnemonicParsing="false" onAction="#switchToMyProfileInterface" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #2E3234;" text="My Profile" textFill="WHITE" />
                   <Button fx:id="payrollProfile_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" mnemonicParsing="false" onAction="#switchToPayslipInterface" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #2E3234;" text="Payroll Profile" textFill="WHITE" />
                   <Button fx:id="manage_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" mnemonicParsing="false" onAction="#switchToManageInterface" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #2E3234;" text="Manage" textFill="WHITE" />
-                  <Button fx:id="payroll_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="10.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #2E3234;" text="Payroll" textFill="WHITE" />
                   <Button fx:id="logout_Button" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="10.0" layoutY="147.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #2E3234;" text="Logout" textFill="WHITE" />
                </children>
             </VBox>
