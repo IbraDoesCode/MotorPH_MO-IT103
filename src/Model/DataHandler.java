@@ -9,6 +9,10 @@ import java.util.List;
 public class DataHandler {
 
 
+    public static List<Employee> retrieveEmployeeList() throws IOException, CsvException {
+        return EmployeeDataHandler.retrieveEmployees();
+    }
+
     public static Employee retrieveEmployeeByID(int employee_id) throws IOException, CsvException {
         return EmployeeDataHandler.retrieveEmployeeByID(employee_id);
     }
