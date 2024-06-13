@@ -3,6 +3,7 @@ package Controller;
 import Model.DataHandler;
 import Model.Employee;
 import Model.User;
+import Services.AuthenticationService;
 import com.opencsv.exceptions.CsvException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +34,7 @@ public class LoginController {
                 return;
             }
 
-            if (!AuthenticationHandler.authenticate(username, password)) {
+            if (!AuthenticationService.authenticate(username, password)) {
                 AlertUtil.showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid Credentials");
                 return;
             }
@@ -43,7 +44,7 @@ public class LoginController {
 
             AlertUtil.showAlert(Alert.AlertType.INFORMATION, "Login Success", "Welcome " + user.getFirst_name());
 
-            MainInterfaceController controller = MainInterfaceController.initializeUI(event, employee);
+            MainUIController controller = MainUIController.initializeUI(event, employee);
 
             if (!user.isAdmin()) {
                 controller.disableAdminButtons();

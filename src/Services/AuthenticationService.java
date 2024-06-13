@@ -1,4 +1,4 @@
-package Controller;
+package Services;
 
 import Model.DataHandler;
 import Model.User;
@@ -7,7 +7,7 @@ import com.opencsv.exceptions.CsvException;
 import java.io.IOException;
 import java.util.List;
 
-public class AuthenticationHandler {
+public class AuthenticationService {
 
     public static boolean authenticate(String username, String password) throws IOException, CsvException{
         List<User> users = DataHandler.retrieveUserCredentials();

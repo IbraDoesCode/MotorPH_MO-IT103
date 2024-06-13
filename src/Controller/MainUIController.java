@@ -15,7 +15,7 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
-public class MainInterfaceController {
+public class MainUIController {
 
     @FXML
     private StackPane contentArea;
@@ -35,11 +35,11 @@ public class MainInterfaceController {
         this.employee = employee;
     }
 
-    public static MainInterfaceController initializeUI(ActionEvent event, Employee employee) throws IOException {
-        FXMLLoader loader = new FXMLLoader(MainInterfaceController.class.getResource("/View/MainInterface.fxml"));
+    public static MainUIController initializeUI(ActionEvent event, Employee employee) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainUIController.class.getResource("/View/MainUI.fxml"));
         Parent root = loader.load();
 
-        MainInterfaceController controller = loader.getController();
+        MainUIController controller = loader.getController();
         controller.setWelcomeLabel(employee);
         controller.setEmployee(employee);
 
